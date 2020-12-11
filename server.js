@@ -1,5 +1,7 @@
 /* SECTION External Modules */
 const express = require('express');
+const methodOverRide = require('method-override');
+
 const app = express();
 
 
@@ -10,6 +12,14 @@ const ctrl = require('./controllers');
 
 
 app.set('view engine', 'ejs');
+
+
+// SECTION MIDDLEWARE
+app.use( express.urlencoded({ extended: true }) );
+
+app.use( methodOverRide('_method') );
+
+
 
 app.get('/', ( req, res ) => res.render('home') );
 

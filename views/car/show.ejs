@@ -13,5 +13,9 @@
     <h4>Year: <%= car.year %> </h4>
     <h5>Color: <%= car.color %> </h5>
 
+    <form method="POST" action="/cars/<%= car._id %>/delete?_method=DELETE">
+        <input type="submit" value="delete">
+
+    </form>
 </body>
 </html>
