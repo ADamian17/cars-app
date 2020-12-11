@@ -13,5 +13,17 @@ router.get( '/', (req, res) => {
     res.render('car/index', context );
 } );
 
+// Show 
+router.get('/:carid', (req, res) => {
+
+    const id = req.params.carid;
+
+    const context = {
+        car: db.Car[id]
+    };
+
+    res.render('car/show', context );
+}); 
+
 
 module.exports = router;
