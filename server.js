@@ -6,7 +6,14 @@ const app = express();
 const PORT = 3005;
 
 
-app.get('/', ( req, res ) => res.send('Welcome SEI') );
+const ctrl = require('./controllers');
+
+
+app.set('view engine', 'ejs');
+
+app.get('/', ( req, res ) => res.render('home') );
+
+app.use( '/cars', ctrl.car );
 
 app.listen(PORT, () => console.log(`listining at ${PORT}`) );
 
