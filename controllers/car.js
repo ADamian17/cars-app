@@ -1,5 +1,4 @@
 const express = require('express');
-const models = require('../models');
 const router = express.Router();
 
 const db = require('../models'); 
@@ -38,7 +37,32 @@ router.get('/:carid', (req, res) => {
     res.render('car/show', context );
 });
 
+// EDIT
+router.get('/:carid/edit', ( req, res) => {
+    const id = req.params.carid;
 
+    const context = {
+        car: db.Car[id]
+    };
+
+    res.render('car/edit', context );
+});
+
+
+router.put('/:carid', ( req, res )=> {
+
+    const id = parseInt (req.params.carid);
+
+    const foundCar = db.Car.find( ( car ) => car._id === id );
+    foundCar.color = req.body.color;
+    foundCar.model = req.body.model;
+    foundCar.year = req.body.year;
+
+    res.redirect(`/cars/${id}`);
+
+} );
+
+// delete
 router.delete('/:id/delete', ( req, res ) => {
     const id = req.params.id;
 

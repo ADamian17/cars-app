@@ -7,15 +7,24 @@
     <title>Cars | Show </title>
 </head>
 <body>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/cars">Cars</a>
+        <a href="/cars/new">Add Car</a>
+    </nav>
+
     <h1> Car Details </h1>
 
     <h3>Model: <%= car.model %> </h3>
     <h4>Year: <%= car.year %> </h4>
     <h5>Color: <%= car.color %> </h5>
 
+
+    <a href="/cars/<%= car._id %>/edit">Edit</a>
+
     <form method="POST" action="/cars/<%= car._id %>/delete?_method=DELETE">
         <input type="submit" value="delete">
-
     </form>
+    
 </body>
 </html>
